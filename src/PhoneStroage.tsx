@@ -8,10 +8,11 @@ function PhoneStroage() {
             const saveData = localStorage.getItem("name")
             if (saveData)
                 setInput(saveData)
-        })
+        },[])
     return(
         <>
         <h1>Hey Buddy </h1>
+        <h2> Why Are You Still There </h2>
         </>
     )
 }
