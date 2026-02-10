@@ -1,0 +1,28 @@
+
+function App1() {
+
+    const Y = () => {
+        return (
+            <>
+                <h1 className="text-danger">False</h1>
+                <h1 className="text-danger">Oops</h1>
+            </>
+        )
+    }
+
+    const IfElse = ({ no }: { no: boolean }) => {
+        return no ? <h1>True</h1> : <h1>False</h1>
+    }
+
+    return (
+        <>
+            <h1>App1 Component</h1>
+
+            <Y />
+            <IfElse no={true} />
+            <IfElse no={false} />
+        </>
+    )
+}
+
+export default App1
