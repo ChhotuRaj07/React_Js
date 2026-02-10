@@ -9,10 +9,19 @@ function PhoneStroage() {
             if (saveData)
                 setInput(saveData)
         },[])
+
+        useEffect(() =>{
+            const timer = setTimeout(() =>{
+                localStorage.setItem("name",Input)
+            },5000)
+            return() => clearTimeout(timer)
+        })
     return(
         <>
-        <h1>Hey Buddy </h1>
-        <h2> Why Are You Still There </h2>
+        <input type="text"
+        value={Input}
+        onChange={(i) =>{setInput(i.target.value)}}
+         />
         </>
     )
 }
