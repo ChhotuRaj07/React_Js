@@ -55,61 +55,62 @@
 
 
 
-import { useState } from "react";
+import { useState, type SetStateAction } from "react";
 
 function Voting() {
+  const [age, setAge] = useState("");
+  const [isEligible, setIsEligible] = useState(false);
+  const [message, setMessage] = useState("");
+  const [votedParty, setVotedParty] = useState("");
 
-    const [age, setAge] = useState("");
-    const [isEligible, setIsEligible] = useState(false);
-    const [message, setMessage] = useState("");
-    const [votedParty, setVotedParty] = useState("");
+  const checkEligibility = () => {
+    if (age === "") {
+      setMessage("Please enter your age!");
+      setIsEligible(false);
+      return;
+    }
 
-    const checkEligibility = () => {
-        if (age === "") {
-            setMessage("Please enter your age!");
-            return;
-        }
+    const numAge = Number(age);
 
-        const numAge = Number(age);
+    if (numAge < 18) {
+      setIsEligible(false);
+      setMessage("Sorry, you are not eligible to vote!");
+    } else {
+      setIsEligible(true);
+      setMessage("");
+    }
+  };
 
-        if (numAge < 18) {
-            setIsEligible(false);
-            setMessage("Sorry, you are not eligible to vote!");
-        } else {
-            setIsEligible(true);
-            setMessage("");
-        }
-    };
+  const vote = (party: SetStateAction<string>) => {
+    setVotedParty(party);
+  };
 
-    const vote = (party) => {
-        setVotedParty(party);
-    };
+  return (
+    <>
+      <h2>Voting App</h2>
 
-    return (
+      <input
+        type="number"
+        placeholder="Enter your age"
+        value={age}
+        onChange={(e) => setAge(e.target.value)}
+      />
+
+      <button onClick={checkEligibility}>Check Eligibility</button>
+
+      {message && <p>{message}</p>}
+
+      {isEligible && !votedParty && (
         <>
-            <h2>Enter Your Age</h2>
-            <input
-                type="number"
-                placeholder="Enter your age"
-                value={age}
-                onChange={(e) => setAge(e.target.value)}
-            />
-
-            <button onClick={checkEligibility}>Check Eligibility</button>
-
-            {message && <p>{message}</p>}
-
-            {isEligible && !votedParty && (
-                <>
-                    <h3>Select Party</h3>
-                    <button onClick={() => vote("BJP")}>BJP</button>
-                    <button onClick={() => vote("Congress")}>Congress</button>
-                </>
-            )}
-
-            {votedParty && <h3>Thanks for voting {votedParty} 🎉</h3>}
+          <h3>Select Party</h3>
+          <button onClick={() => vote("BJP")}>BJP</button>
+          <button onClick={() => vote("Congress")}>Congress</button>
         </>
-    );
+      )}
+
+      {votedParty && <h3>Thanks for voting {votedParty} 🎉</h3>}
+    </>
+  );
 }
 
 export default Voting;

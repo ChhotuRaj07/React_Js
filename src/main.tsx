@@ -1,6 +1,7 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
+import Qr from './Qr'
 // import Maxmin from './Maxmin.js'
 // import NiceUiLogin from './NiceUiLogin.js'
 // import OddEven from './OddEven.js'
@@ -11,7 +12,7 @@ import './index.css'
 // import ProperCounter from './ProperCounter.js'rpm run d
 // import RefDemo from './RefDemo.js'
 // import StroageDemo from './StorageDemo.js'
-import PhoneStroage from './PhoneStroage.js'
+// import PhoneStroage from './PhoneStroage.js'
 // import Profile from './Profile'
 // import App1 from './App1'
 // import App from './App.tsx'
@@ -27,7 +28,7 @@ import PhoneStroage from './PhoneStroage.js'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <PhoneStroage />
+    <Qr />
   </StrictMode>
 )
 
