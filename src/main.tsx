@@ -1,7 +1,8 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
-import Qr from './Qr'
+// import Qr from './Qr'
+import Calc from './Calc'
 // import Maxmin from './Maxmin.js'
 // import NiceUiLogin from './NiceUiLogin.js'
 // import OddEven from './OddEven.js'
@@ -28,7 +29,7 @@ import Qr from './Qr'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <Qr />
+    <Calc />
   </StrictMode>
 )
 
